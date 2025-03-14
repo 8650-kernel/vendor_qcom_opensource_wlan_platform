@@ -138,6 +138,13 @@ def _define_modules_for_target_variant(target, variant):
             ]),
             includes = ["cnss", "cnss_utils"],
             kconfig = "cnss2/Kconfig",
+            #ifdef OPLUS_FEATURE_WIFI_BDF
+            #add oplus feature with bazel compile config
+            local_defines = [
+                        "OPLUS_FEATURE_WIFI_BDF",
+                        "OPLUS_FEATURE_WIFI_MAC",
+            ],
+            #endif
             defconfig = defconfig,
             conditional_srcs = {
                 "CONFIG_CNSS2_QMI": {
@@ -180,6 +187,13 @@ def _define_modules_for_target_variant(target, variant):
             kconfig = "icnss2/Kconfig",
             copts = ["-Wno-format"],
             defconfig = defconfig,
+            #ifdef OPLUS_FEATURE_WIFI_BDF
+            #add oplus feature with bazel compile config
+            local_defines = [
+                            "OPLUS_FEATURE_WIFI_BDF",
+                            "OPLUS_FEATURE_WIFI_MAC",
+            ],
+            #endif
             conditional_srcs = {
                 "CONFIG_ICNSS2_QMI": {
                     True: [
